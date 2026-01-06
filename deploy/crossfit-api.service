@@ -1,0 +1,15 @@
+[Unit]
+Description=CrossFit Performance API
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/crossfit-app/backend
+Environment="PATH=/var/www/crossfit-app/venv/bin"
+ExecStart=/var/www/crossfit-app/venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
